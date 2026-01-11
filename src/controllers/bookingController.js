@@ -20,6 +20,12 @@ const createBooking = async (req, res) => {
       return res.status(400).json({ message: 'Event is sold out' });
     }
 
+    // Check if user already booked this event
+    const existingBooking = await Booking.findOne({ customer: req.user.id, event: eventId });
+    if (existingBooking) {
+        return res.status(400).json({ message: 'You have already booked this event' });
+    }
+
     // Create booking
     const booking = await Booking.create({
       customer: req.user.id,
