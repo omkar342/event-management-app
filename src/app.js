@@ -18,6 +18,6 @@ app.use('/api/events', eventRoutes);
 app.use('/api/bookings', bookingRoutes);
 
 // Root route
-app.get('/', (req, res) => res.send('API is running...'));
+app.get('/', (req, res) => res.send('API is running on port 3000.'));
 
 module.exports = app;
